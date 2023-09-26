@@ -1,3 +1,7 @@
-import axios from "axios"
+import axios from 'axios'
 
-axios.defaults.baseURL = "http://localhost:8000"
+const api = axios.create({
+  baseURL: 'http://191.52.55.31:19003/api/',
+})
+
+export default api

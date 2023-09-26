@@ -4,7 +4,7 @@ import PencilIcon from 'vue-material-design-icons/Pencil.vue'
 import ContentSaveIcon from 'vue-material-design-icons/ContentSave.vue'
 import DeleteIcon from 'vue-material-design-icons/Delete.vue'
 
-import temaService from '@/services/tema.js'
+import temaService from '@/services/temas.js'
 
 const temas = ref([])
 const currentTema = ref({
@@ -35,12 +35,12 @@ function editTema(tema) {
 </script>
 
 <template>
-  <h2>Tema de Decoracao</h2>
+  <h2>Decoracao Fabidecot</h2>
   <div class="row center">
     <form class="form">
       <div class="row">
         <div class="row form-item">
-          <input type="text" placeholder="Tema" v-model="currentTema.name" @keyup.enter="save" />
+          <input type="text" placeholder="Tema" v-model="currenttema.name" @keyup.enter="save" />
           <label for="">Tema</label>
         </div>
         <button @click="save">
@@ -55,7 +55,7 @@ function editTema(tema) {
       <thead>
         <tr>
           <th>Nome</th>
-          <th style="width: 10%">Ações</th>
+          <th style="width: 10%">Disney</th>
         </tr>
       </thead>
       <tbody>
@@ -70,8 +70,6 @@ function editTema(tema) {
     </table>
   </div>
 </template>
-
-
 
 <style scoped>
 .form {
