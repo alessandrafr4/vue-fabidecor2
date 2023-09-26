@@ -5,10 +5,10 @@ import ProdutoList from '@/components/ProdutoList.vue'
 import Modal from '@/components/template/Modal.vue'
 
 import temaService from '@/services/tema.js'
-import imageService from '@/services/imagens.js'
+import imageService from '@/services/images.js'
 import produtoService from '@/services/produto.js'
 
-const produtos = ref([])
+const tema = ref([])
 const coverUrl = ref('')
 const file = ref(null)
 const currentProduto = reactive({
@@ -40,7 +40,7 @@ async function save() {
 
 onMounted(async () => {
   const data = await temaService.getAllTemas()
-  produtos.value = data
+  tema.value = data
 })
 
 const showForm = ref(false)
@@ -48,7 +48,7 @@ const showForm = ref(false)
 
 <template>
   <div class="row">
-    <h2>Filmes</h2>
+    <h2>Produto</h2>
     <button class="addButton" @click="showForm = true">
       <PlusBoxIcon />
       Adicionar
@@ -57,7 +57,7 @@ const showForm = ref(false)
   <ProdutoList />
   <modal :visible="showForm" @close="showForm = false">
     <template #header>
-      <h3>Cadastro de filme</h3>
+      <h3>Cadastro de Produto</h3>
     </template>
     <template #body>
       <form class="form">
@@ -84,7 +84,7 @@ const showForm = ref(false)
         </div>
         <div class="form-item">
           <select v-model="currentProduto.tema">
-            <option disabled value="">Selecione um produto</option>
+            <option disabled value="">Selecione um Tema</option>
             <option v-for="tema in temas" :key="tema.id" :value="tema.id">
               {{ tema.name }}
             </option>
