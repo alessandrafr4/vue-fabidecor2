@@ -14,7 +14,6 @@ const categorias = ref([])
 const coverUrl = ref('')
 const file = ref(null)
 const currentProduto = reactive({
-  adicionais: '',
   year: '',
   tema: '',
   categoria:'',  
@@ -31,7 +30,6 @@ async function save() {
   await produtoService.saveProduto(currentProduto)
   Object.assign(currentProduto, {
     id: '',
-    adicionais: '',
     year: '',
     tema: '',
     cover_attachment_key: ''
@@ -42,8 +40,6 @@ async function save() {
 onMounted(async () => {
   let data = await temaService.getAllTemas()
   temas.value = data
-
-  
 })
 
 onMounted(async () => {
@@ -78,8 +74,8 @@ const showForm = ref(false)
           </div>
         </div>
         <div class="form-item">
-          <input type="text" placeholder="descricao" id="descricao" v-model="currentProduto.nome" />
-          <label for="descricao">Descricao</label>
+          <input type="text" placeholder="Nome" id="nome" v-model="currentProduto.nome" />
+          <label for="nome"> Nome</label>
         </div>
         <div class="form-item">
           <input
@@ -117,6 +113,7 @@ const showForm = ref(false)
           </select>
           <label for="year">Categoria</label>
         </div>
+        
 
       </form>
     </template>

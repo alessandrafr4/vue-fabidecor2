@@ -1,12 +1,13 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import StarIcon from 'vue-material-design-icons/Star.vue'
+// import StarIcon from 'vue-material-design-icons/Star.vue'
 
 import produtoService from '@/services/produto.js'
 
 const produtos = ref([])
 
 onMounted(async () => {
+  console.log('oi')
   const data = await produtoService.getAllProdutos()
   produtos.value = data
 }) 
@@ -15,17 +16,16 @@ onMounted(async () => {
 <template>
   <div class="row wrap">
     <div v-for="produto in produtos" :key="produto.id" class="card">
-      <img :src="produto.cover.url" :alt="produto.title" />
+      <hr>      
+      <!-- <img :src="produto.cover.url" :alt="produto.title" /> -->
       <div class="produto-detail">
-        <h3>{{ produto.title }}</h3>
+        <h3>{{ produto.nome }}</h3>
         <div class="produto-year-rating">
-          <p>{{ produto.year }}</p>
-          <div class="rating">
-            <StarIcon v-for="n in produto.rating" :key="n" fillColor="orange" size="18" />
-            <StarIcon v-for="n in 5 - produto.rating" :key="n" fillColor="gray" size="18" />
-          </div>
+          <p>{{ produto.quantidade }}</p>
+          
         </div>
-        <p>{{ produto.genre }}</p>
+        <p>{{ produto.tema.nome }}</p>
+        <p>{{ produto.categoria.descricao }}</p>
       </div>
     </div>
   </div>
