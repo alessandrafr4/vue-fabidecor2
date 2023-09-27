@@ -3,3 +3,16 @@
 filename = "requirements.txt"
 without-hashes = "true"
 
+
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "", email = ""},
+]
+dependencies = []
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+

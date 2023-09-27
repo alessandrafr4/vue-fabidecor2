@@ -5,17 +5,19 @@ import ProdutoList from '@/components/ProdutoList.vue'
 import Modal from '@/components/template/Modal.vue'
 
 import temaService from '@/services/tema.js'
+import categoriaService from '@/services/categoria.js'
 import imageService from '@/services/images.js'
 import produtoService from '@/services/produto.js'
 
 const temas = ref([])
+const categorias = ref([])
 const coverUrl = ref('')
 const file = ref(null)
 const currentProduto = reactive({
   adicionais: '',
   year: '',
   tema: '',
-  rating: 0
+  categoria:'',  
 })
 
 function onFileChange(e) {
@@ -32,7 +34,6 @@ async function save() {
     adicionais: '',
     year: '',
     tema: '',
-    rating: 0,
     cover_attachment_key: ''
   })
   showForm.value = false
@@ -41,7 +42,13 @@ async function save() {
 onMounted(async () => {
   let data = await temaService.getAllTemas()
   temas.value = data
-  // data = await categorias
+
+  
+})
+
+onMounted(async () => {
+  const data = await categoriaService.getAllCategorias()
+  categorias.value = data
 })
 
 const showForm = ref(false)
@@ -71,36 +78,32 @@ const showForm = ref(false)
           </div>
         </div>
         <div class="form-item">
-          <input type="text" placeholder="adicionais" id="adicionais" v-model="currentProduto.adicionais" />
-          <label for="adicionais">Adicionais</label>
-        </div>
-        <div class="form-item">
-          <input type="text" placeholder="descricao" id="descricao" v-model="currentProduto.descricao" />
+          <input type="text" placeholder="descricao" id="descricao" v-model="currentProduto.nome" />
           <label for="descricao">Descricao</label>
         </div>
         <div class="form-item">
           <input
             type="number"
             placeholder="Quantidade"
-            id="year"
-            v-model="currentProduto.year"
+            id="qtde"
+            v-model="currentProduto.quantidade"
           />
-          <label for="year">Quantidade</label>
+          <label for="qtde">Quantidade</label>
         </div>
         <div class="form-item">
           <input
             type="number"
             placeholder="Preco"
-            id="year"
-            v-model="currentProduto.year"
+            id="preco"
+            v-model="currentProduto.preco"
           />
-          <label for="year">Preco</label>
+          <label for="preco">Preco</label>
         </div>
         <div class="form-item">
           <select v-model="currentProduto.tema">
             <option disabled value="">Selecione um Tema</option>
             <option v-for="tema in temas" :key="tema.id" :value="tema.id">
-              {{ tema.descricao }}
+              {{ tema.nome }}
             </option>
           </select>
           <label for="year">Tema</label>
@@ -109,7 +112,7 @@ const showForm = ref(false)
           <select v-model="currentProduto.categoria">
             <option disabled value="">Selecione uma Categoria</option>
             <option v-for="categoria in categorias" :key="categoria.id" :value="categoria.id">
-              {{ categoria.name }}
+              {{ categoria.descricao }}
             </option>
           </select>
           <label for="year">Categoria</label>

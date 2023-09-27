@@ -8,7 +8,7 @@ import categoriaService from '@/services/categoria.js'
 
 const categorias = ref([])
 const currentCategoria = ref({
-  name: ''
+  descricao: ''
 })
 
 onMounted(async () => {
@@ -20,7 +20,7 @@ async function save() {
   await categoriaService.saveCategoria(currentCategoria.value)
   const data = await categoriaService.getAllCategorias()
   categorias.value = data
-  currentCategoria.value = { name: '' }
+  currentCategoria.value = { descricao: '' }
 }
 
 async function deleteCategoria(categoria) {

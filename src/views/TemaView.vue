@@ -40,7 +40,7 @@ function editTema(tema) {
     <form class="form">
       <div class="row">
         <div class="row form-item">
-          <input type="text" placeholder="Tema" v-model="currentTema.name" @keyup.enter="save" />
+          <input type="text" placeholder="Tema" v-model="currentTema.nome" @keyup.enter="save" />
           <label for="">Tema</label>
         </div>
         <button @click="save">
@@ -60,7 +60,7 @@ function editTema(tema) {
       </thead>
       <tbody>
         <tr v-for="tema in temas" :key="tema.id">
-          <td>{{ tema.descricao }}</td>
+          <td>{{ tema.nome }}</td>
           <td>
             <DeleteIcon @click="deleteTema(tema)" />
             <PencilIcon @click="editTema(tema)" />
