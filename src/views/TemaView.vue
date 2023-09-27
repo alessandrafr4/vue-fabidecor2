@@ -35,7 +35,7 @@ function editTema(tema) {
 </script>
 
 <template>
-  <h2> Tema de decoracao</h2>
+  <h2> Tema de decoracao...</h2>
   <div class="row center">
     <form class="form">
       <div class="row">
