@@ -8,11 +8,11 @@ import temaService from '@/services/tema.js'
 import imageService from '@/services/images.js'
 import produtoService from '@/services/produto.js'
 
-const tema = ref([])
+const temas = ref([])
 const coverUrl = ref('')
 const file = ref(null)
 const currentProduto = reactive({
-  title: '',
+  adicionais: '',
   year: '',
   tema: '',
   rating: 0
@@ -29,7 +29,7 @@ async function save() {
   await produtoService.saveProduto(currentProduto)
   Object.assign(currentProduto, {
     id: '',
-    title: '',
+    adicionais: '',
     year: '',
     tema: '',
     rating: 0,
@@ -39,8 +39,9 @@ async function save() {
 }
 
 onMounted(async () => {
-  const data = await temaService.getAllTemas()
-  tema.value = data
+  let data = await temaService.getAllTemas()
+  temas.value = data
+  // data = await categorias
 })
 
 const showForm = ref(false)
@@ -70,36 +71,50 @@ const showForm = ref(false)
           </div>
         </div>
         <div class="form-item">
-          <input type="text" placeholder="Título" id="title" v-model="currentProduto.title" />
-          <label for="title">Título</label>
+          <input type="text" placeholder="adicionais" id="adicionais" v-model="currentProduto.adicionais" />
+          <label for="adicionais">Adicionais</label>
+        </div>
+        <div class="form-item">
+          <input type="text" placeholder="descricao" id="descricao" v-model="currentProduto.descricao" />
+          <label for="descricao">Descricao</label>
         </div>
         <div class="form-item">
           <input
-            type="text"
-            placeholder="Ano de lançamento"
+            type="number"
+            placeholder="Quantidade"
             id="year"
             v-model="currentProduto.year"
           />
-          <label for="year">Ano de lançamento</label>
+          <label for="year">Quantidade</label>
+        </div>
+        <div class="form-item">
+          <input
+            type="number"
+            placeholder="Preco"
+            id="year"
+            v-model="currentProduto.year"
+          />
+          <label for="year">Preco</label>
         </div>
         <div class="form-item">
           <select v-model="currentProduto.tema">
             <option disabled value="">Selecione um Tema</option>
             <option v-for="tema in temas" :key="tema.id" :value="tema.id">
-              {{ tema.name }}
+              {{ tema.descricao }}
             </option>
           </select>
           <label for="year">Tema</label>
         </div>
         <div class="form-item">
-          <select v-model="currentProduto.rating">
-            <option disabled value="">Rating</option>
-            <option v-for="n in [0, 1, 2, 3, 4, 5]" :key="n" :value="n">
-              {{ n }}
+          <select v-model="currentProduto.categoria">
+            <option disabled value="">Selecione uma Categoria</option>
+            <option v-for="categoria in categorias" :key="categoria.id" :value="categoria.id">
+              {{ categoria.name }}
             </option>
           </select>
-          <label for="year">Rating</label>
+          <label for="year">Categoria</label>
         </div>
+
       </form>
     </template>
     <template #footer>

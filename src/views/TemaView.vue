@@ -54,13 +54,13 @@ function editTema(tema) {
     <table>
       <thead>
         <tr>
-          <th>Nome</th>
-          <th style="width: 10%">Ações</th>
+          <th>descricao</th>
+          <th style="width: 10%"></th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="tema in temas" :key="tema.id">
-          <td>{{ tema.name }}</td>
+          <td>{{ tema.descricao }}</td>
           <td>
             <DeleteIcon @click="deleteTema(tema)" />
             <PencilIcon @click="editTema(tema)" />
