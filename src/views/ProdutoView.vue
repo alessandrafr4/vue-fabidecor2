@@ -26,7 +26,7 @@ function onFileChange(e) {
 
 async function save() {
   const image = await imageService.uploadImage(file.value)
-  currentProduto.cover_attachment_key = image.attachment_key
+  currentProduto.capa_attachment_key = image.attachment_key
   await produtoService.saveProduto(currentProduto)
   Object.assign(currentProduto, {
     id: '',

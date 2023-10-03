@@ -17,7 +17,7 @@ onMounted(async () => {
   <div class="row wrap">
     <div v-for="produto in produtos" :key="produto.id" class="card">
       <hr>      
-      <!-- <img :src="produto.cover.url" :alt="produto.title" /> -->
+      <img :src="produto.capa?.file" :alt="produto.title" />
       <div class="produto-detail">
         <h3>{{ produto.nome }}</h3>
         <div class="produto-year-rating">
@@ -33,8 +33,8 @@ onMounted(async () => {
 
 <style scoped>
 .card {
-  width: 200px;
-  height: 400px;
+  width: 300px;
+  height: 500px;
   margin: 10px;
   padding: 10px;
   border: 1px solid #ccc;
@@ -51,7 +51,7 @@ onMounted(async () => {
 
 .-year-rating {
   display: flex;
-  column-gap: 2rem;
+  column-gap: 55rem;
 }
 
 .-detail h3 {
