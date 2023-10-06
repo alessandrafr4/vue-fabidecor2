@@ -35,7 +35,9 @@ function editTema(tema) {
 </script>
 
 <template>
-  <h2> Tema de decoracao...</h2>
+<header>
+    <div class="esquerdo">  <strong> Tema </strong></div>
+  </header>
   <div class="row center">
     <form class="form">
       <div class="row">
@@ -103,4 +105,23 @@ thead {
   height: 2rem;
   font: 1em sans-serif;
 }
+
+header {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  height: 70px;
+  background: #b6a7ff;
+  
+}
+
+.esquerdo{
+  margin-left: 20px;
+  font-size: 30px;
+}
+
+strong{
+  color: #600fab;
+}
+
 </style>

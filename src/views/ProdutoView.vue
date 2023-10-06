@@ -16,7 +16,7 @@ const file = ref(null)
 const currentProduto = reactive({
   year: '',
   tema: '',
-  categoria:'',  
+  categoria: '',
 })
 
 function onFileChange(e) {
@@ -52,8 +52,10 @@ const showForm = ref(false)
 
 <template>
   <div class="row">
-    <h2>Produto</h2>
-    <button class="addButton" @click="showForm = true">
+
+    <header>
+      <div class="esquerdo"> <strong> Produto </strong></div>
+    </header> <button class="addButton" @click="showForm = true">
       <PlusBoxIcon />
       Adicionar
     </button>
@@ -78,21 +80,11 @@ const showForm = ref(false)
           <label for="nome"> Nome</label>
         </div>
         <div class="form-item">
-          <input
-            type="number"
-            placeholder="Quantidade"
-            id="qtde"
-            v-model="currentProduto.quantidade"
-          />
+          <input type="number" placeholder="Quantidade" id="qtde" v-model="currentProduto.quantidade" />
           <label for="qtde">Quantidade</label>
         </div>
         <div class="form-item">
-          <input
-            type="number"
-            placeholder="Preco"
-            id="preco"
-            v-model="currentProduto.preco"
-          />
+          <input type="number" placeholder="Preco" id="preco" v-model="currentProduto.preco" />
           <label for="preco">Preco</label>
         </div>
         <div class="form-item">
@@ -113,7 +105,7 @@ const showForm = ref(false)
           </select>
           <label for="year">Categoria</label>
         </div>
-        
+
 
       </form>
     </template>
@@ -146,6 +138,7 @@ const showForm = ref(false)
   flex-direction: column;
   margin-bottom: 1rem;
   row-gap: 0.5rem;
+
 }
 
 #preview {
@@ -168,4 +161,23 @@ const showForm = ref(false)
   width: 200px;
   height: 270px;
 }
+
+header {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  height: 70px;
+  background: #b6a7ff;
+  
+}
+
+.esquerdo{
+  margin-left: 20px;
+  font-size: 30px;
+}
+
+strong{
+  color: #600fab;
+}
+
 </style>

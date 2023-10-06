@@ -18,6 +18,12 @@
 header {
   line-height: 1.5;
   height: 5rem;
+   justify-content: space-between;
+  display: flex;
+  align-items: center;
+  height: 70px;
+  background: #b6a7ff;
+  
 }
 
 nav {
