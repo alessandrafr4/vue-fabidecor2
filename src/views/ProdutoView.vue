@@ -14,6 +14,7 @@ const categorias = ref([])
 const coverUrl = ref('')
 const file = ref(null)
 const currentProduto = reactive({
+  nome: '',
   year: '',
   tema: '',
   categoria: '',
@@ -30,6 +31,7 @@ async function save() {
   await produtoService.saveProduto(currentProduto)
   Object.assign(currentProduto, {
     id: '',
+    nome: '',
     year: '',
     tema: '',
     cover_attachment_key: ''
@@ -52,7 +54,6 @@ const showForm = ref(false)
 
 <template>
   <div class="row">
-
     <header>
       <div class="esquerdo"> <strong> Produto </strong></div>
     </header> <button class="addButton" @click="showForm = true">

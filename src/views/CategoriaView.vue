@@ -42,7 +42,7 @@ function editCategoria(categoria) {
     <form class="form">
       <div class="row">
         <div class="row form-item">
-          <input type="text" placeholder="Categoria" v-model="currentCategoria.name" @keyup.enter="save" />
+          <input type="text" placeholder="Categoria" v-model="currentCategoria.descricao" @keyup.enter="save" />
           <label for="">Categoria</label>
         </div>
         <button @click="save">
