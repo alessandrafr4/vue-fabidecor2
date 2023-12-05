@@ -14,10 +14,10 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="rowwrap">
+  <div class="row wrap">
     <div v-for="produto in produtos" :key="produto.id" class="card">
       <hr>      
-      <img :src="produto.capa.file" :alt="produto.title" />
+      <!-- <img :src="produto.cover.url" :alt="produto.title" /> -->
       <div class="produto-detail">
         <h3>{{ produto.nome }}</h3>
         <div class="produto-year-rating">
@@ -58,7 +58,6 @@ onMounted(async () => {
   margin: 0;
   font-size: 1.2rem;
 }
-
 .rowwrap{
   display: grid;
   flex-direction: row;

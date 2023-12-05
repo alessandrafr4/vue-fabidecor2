@@ -171,6 +171,7 @@ header {
   background: #b6a7ff;
   
 }
+  
 
 .esquerdo{
   margin-left: 20px;
