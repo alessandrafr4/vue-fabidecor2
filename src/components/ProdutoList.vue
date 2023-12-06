@@ -14,10 +14,10 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="row wrap">
+  <div class="lista">
     <div v-for="produto in produtos" :key="produto.id" class="card">
       <hr>      
-      <!-- <img :src="produto.cover.url" :alt="produto.title" /> -->
+      <img :src="produto.capa?.file" :alt="produto.nome" />
       <div class="produto-detail">
         <h3>{{ produto.nome }}</h3>
         <div class="produto-year-rating">
@@ -32,9 +32,17 @@ onMounted(async () => {
 </template>
 
 <style scoped>
+
+.lista {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  color:#600fab;
+}
 .card {
   width: 300px;
-  height: 500px;
+  height: 500px;  display: flex;
+
   margin: 10px;
   padding: 10px;
   border: 1px solid #ccc;
